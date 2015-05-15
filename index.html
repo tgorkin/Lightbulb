@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Lightbulb</title>
+    <link rel="stylesheet" type="text/css" href="./css/lightbox.css">
+  </head>
+
+  <body>
+
+    <div id="pageFrame">
+      <div id="searchFrame">
+        <form id="searchForm">
+          <input type="text" name="imageSearch" id="searchInput"/>
+          <input type="button" value="Submit" id="searchButton" />
+        </form>
+      </div>
+      <div id="previewFrameShell">
+        <div id="previewFrame"></div>
+      </div>
+    </div>
+    <div id="lightbox" style="display: none;">
+      <div id="lightboxBg"></div>
+      <div id="lightboxContainer">
+        <div id="lightboxContent">
+          <a id="prevButton">
+            <img src="./img/navarrow_white.png" class="navarrow"/>
+          </a>
+          <img id="focusImage" src="" />
+          <a id="nextButton">
+            <img src="./img/navarrow_white.png"  class="navarrow"  style="transform: rotate(180deg);"/>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var imageSearch = require("./imageSearch.js");
+      var lightbox = require("./lightbox.js");
+      require("./devtools.js")
+      $ = require("jquery");
+      require("jquery-ui");
+
+      $(document).ready(function($) {
+         $("#searchForm").submit(searchFormSubmit);
+         $("#prevButton").click(prevImage);
+         $("#nextButton").click(nextImage);
+         //Click anywhere to hide lightbox window
+         $('#lightbox').click(function(e) {
+           if($(e.target).is('div')) {
+              $("#pageFrame").removeClass("blur");
+          		$('#lightbox').hide();
+            }
+        	});
+      });
+
+      function searchFormSubmit(e) {
+        e.preventDefault();
+        //imageSearch.getPhotosetFlickr( "72157626579923453", function(photoResults) {
+        var searchText = $('#searchInput').val();
+        imageSearch.searchFlickr( searchText, function(photoResults) {
+          $("#previewFrame").empty();
+          lightbox.setImages(photoResults);
+
+          photoResults.forEach( function(photoUrl, index, array) {
+
+            var a = $("<a></a>").attr("href", photoUrl).click(lightboxTrigger);
+            var img = $('<img style="display: none;"/>').addClass("imagePreview");
+            img.load(function() {
+              $(this).fadeIn(1000);
+            });
+
+            $("#previewFrame").append(a.append(img));
+            img.attr("src", photoUrl);
+          });
+        });
+      }
+
+      function lightboxTrigger(e) {
+        e.preventDefault();
+        var imgUrl = $(this).attr("href");
+        lightbox.showImage(imgUrl);
+      	//insert img tag with clicked link's href as src value
+      	$('#focusImage').attr("src", imgUrl);
+
+      	//show lightbox window - you can use a transition here if you want, i.e. .show('fast')
+      	$('#lightbox').fadeIn(600);
+        $("#pageFrame").addClass("blur");
+      }
+
+      function nextImage(e) {
+        var imgUrl = lightbox.nextImage();
+        $('#focusImage').attr("src", imgUrl);
+      }
+
+      function prevImage(e) {
+        var imgUrl = lightbox.prevImage();
+        $('#focusImage').attr("src", imgUrl);
+      }
+    </script>
+  </body>
+
+</html>

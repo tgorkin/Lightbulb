@@ -53,9 +53,12 @@ body {
   height: 80%;
 }
 
-#focusImage {
+.lightboxImage {
     box-shadow: 0 0 25px #111;
     margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 .navarrowContainer {

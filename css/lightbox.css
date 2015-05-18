@@ -4,7 +4,6 @@ body {
 }
 
 #pageFrame {
-  position: fixed;
   width: 100%;
 }
 
@@ -13,9 +12,10 @@ body {
   text-align: center;
 }
 
-#previewFrameShell {
+#previewFrameContainer {
   padding: 15px;
   text-align: center;
+  -webkit-user-select: none;
 }
 
 #previewFrame {
@@ -34,6 +34,7 @@ body {
 
 #lightbox {
   text-align: center;
+  -webkit-user-select: none;
 }
 
 #lightboxBg {
@@ -47,16 +48,24 @@ body {
 
 #lightboxContainer {
   position: fixed;
-  top: 100px;
+  top: 20%;
   width: 100%;
+  height: 80%;
 }
 
 #focusImage {
     box-shadow: 0 0 25px #111;
+    margin: 0 auto;
+}
+
+.navarrowContainer {
+  position: absolute;
+  top: 30%;
 }
 
 .navarrow {
   width: 64px;
   height: 64px;
   cursor: pointer;
+  position: relative;
 }

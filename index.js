@@ -15,7 +15,14 @@ app.on('window-all-closed', function() {
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 900, height: 600});
+
+  mainWindow = new BrowserWindow({
+    "width": 1010,
+    "height": 700,
+    "min-width": 1010,
+    "min-height": 700,
+    "use-content-size": true
+  });
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
@@ -27,4 +34,5 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
 });

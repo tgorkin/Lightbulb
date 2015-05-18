@@ -33,7 +33,7 @@ exports.searchFlickr = function(searchTerm, onComplete) {
     flickr.photos.search({
       text : searchTerm,
       page: 1,
-      per_page: 50
+      per_page: 192
     }, function(err, result) {
       if(err) { throw new Error(err); }
       var photoList = result.photos.photo;

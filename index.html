@@ -12,24 +12,24 @@
       <div id="searchFrame">
         <form id="searchForm">
           <input type="text" name="imageSearch" id="searchInput"/>
-          <input type="button" value="Submit" id="searchButton" />
+          <input type="button" value="Search" id="searchButton" />
         </form>
       </div>
-      <div id="previewFrameShell">
+      <div id="previewFrameContainer">
         <div id="previewFrame"></div>
       </div>
     </div>
     <div id="lightbox" style="display: none;">
       <div id="lightboxBg"></div>
       <div id="lightboxContainer">
+        <a id="prevButton" class="navarrowContainer" style="left: 0;">
+          <img src="./img/navarrow_white.png" class="navarrow" />
+        </a>
+        <a id="nextButton" class="navarrowContainer" style="right: 0;">
+          <img src="./img/navarrow_white.png"  class="navarrow"  style="transform: rotate(180deg);"/>
+        </a>
         <div id="lightboxContent">
-          <a id="prevButton">
-            <img src="./img/navarrow_white.png" class="navarrow"/>
-          </a>
           <img id="focusImage" src="" />
-          <a id="nextButton">
-            <img src="./img/navarrow_white.png"  class="navarrow"  style="transform: rotate(180deg);"/>
-          </a>
         </div>
       </div>
     </div>

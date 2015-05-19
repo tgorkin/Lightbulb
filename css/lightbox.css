@@ -3,6 +3,11 @@ body {
   padding: 0px;
 }
 
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
 #pageFrame {
   width: 100%;
 }
@@ -10,6 +15,21 @@ body {
 #searchFrame {
   padding: 15px;
   text-align: center;
+}
+
+#searchInput {
+  height: 18px;
+  font-size: 14px;
+}
+
+#searchButton {
+  position: relative;
+  top: 8px;
+}
+
+#loader {
+  position: relative;
+  top: 40px;
 }
 
 #previewFrameContainer {
@@ -48,22 +68,32 @@ body {
 
 #lightboxContainer {
   position: fixed;
-  top: 20%;
+  top: 15%;
   width: 100%;
   height: 80%;
 }
 
+.lightboxImageContainer {
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
 .lightboxImage {
     box-shadow: 0 0 25px #111;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
+}
+
+.lightboxImageTitle {
+  color: white;
+  margin: 0 20px;
 }
 
 .navarrowContainer {
   position: absolute;
   top: 30%;
+  z-index: 1;
 }
 
 .navarrow {

@@ -11,5 +11,9 @@
   "license": "MIT",
   "devDependencies": {
     "electron-prebuilt": "^0.26.0"
+  },
+  "dependencies": {
+    "flickrapi": "^0.3.32",
+    "jquery": "^2.1.4"
   }
 }
